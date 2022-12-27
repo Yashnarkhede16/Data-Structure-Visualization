@@ -61,8 +61,7 @@ class CircularQueue:
         # All about rear pointer
         points_rear = (205,255+50,205-20,(255+320)/2+50,205-10,(255+320)/2+50,205-10,320+50,205+10,320+50,205+10,(255+320)/2+50,205+20,(255+320)/2+50)
         self.rear_indicator = self.make_canvas.create_polygon(points_rear,width=3,fill="#0FFF0F",outline="black")
-        self.rear_label = Label(self.make_canvas,text="rear",fg="brown",bg="chocolate",font=("Arial",20,"bold"))
-        self.rear_label.place(x=self.rear_label_position_controller,y=323+50)
+      
         # All about front pointer
         points_front = (205,160+50, 205-20,(160+90)/2+50, 205-10,(160+90)/2+50, 205-10,90+50, 205+10,90+50, 205+10,(160+90)/2+50, 205+20,(160+90)/2+50)
         self.front_indicator = self.make_canvas.create_polygon(points_front,width=3,fill="#0FFF0F",outline="black")
@@ -160,7 +159,6 @@ class CircularQueue:
         rear_move = 312
         while rear_move > 0:
             self.rear_label.place_forget()
-            self.rear_label_position_controller -= 2
             self.rear_label.place(x=self.rear_label_position_controller, y=323 + 50)
             self.make_canvas.move(self.rear_indicator, -2, 0)
             if self.rear_index == 0:
@@ -230,8 +228,7 @@ class CircularQueue:
             time.sleep(0.008)
             self.window.update()
 
-        self.front_index = -1
-        self.rear_index = -1
+        self.front_index = -2
         self.index_marker = 85
 
     def take_zero_reset(self):#When front == 5 , then after deletion set front at 0
@@ -252,7 +249,6 @@ if __name__ == '__main__':
     window.geometry("800x600")
     window.maxsize(800,600)
     window.minsize(800,600)
-    window.iconbitmap("circular_queue_icon.ico")
     window.config(bg="orange")
     CircularQueue(window)
     window.mainloop()
