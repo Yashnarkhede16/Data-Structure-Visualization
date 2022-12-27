@@ -1,7 +1,5 @@
 import tkinter as tk
 import subprocess
-import os
-from tkinter import messagebox
 from tkinter import filedialog
 from tkinter import ttk
 from subprocess import call
@@ -90,7 +88,6 @@ class FirstPage(tk.Frame):
             b1.place(x=170, y=150)
 
             window.geometry("570x220")
-            window.mainloop()
 
         B2 = tk.Button(self, text="Register", bg="dark orange", font=("Arial", 15), command=register)
         B2.place(x=650, y=20)
@@ -172,7 +169,6 @@ class Application(tk.Tk):
 
         self.frames = {}
         for F in (FirstPage, SecondPage, ThirdPage):
-            frame = F(window, self)
             self.frames[F] = frame
             frame.grid(row=0, column=0, sticky="nsew")
 
