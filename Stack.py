@@ -121,9 +121,7 @@ class StackVisualizer:
              messagebox.showerror("Overflow","Stack is full")
           else:
               # Access Button deactivation
-              self.pop_btn.config(state=DISABLED)
-              self.push_btn.config(state=DISABLED)
-
+              
               #Element value give diagram set
               self.element_take_label = Label(self.window,text="Enter the element value",
                                          bg="orange",fg="brown",font=("Arial",12,"bold"))
@@ -190,7 +188,6 @@ class StackVisualizer:
                   self.stack_canvas.delete(self.block_make)
                   self.entry_number.place_forget()
                   self.number_set_y += 2
-                  self.block_up+= 2
                   self.block_down+= 2
                   self.block_make = self.stack_canvas.create_rectangle(self.block_left, self.block_up, self.block_right, self.block_down, fill="black", width=2, outline="blue")
                   self.entry_number.place(x=self.number_set_x, y=self.number_set_y)
@@ -204,11 +201,10 @@ class StackVisualizer:
 
       def reset_with_position_set(self): #Reset the coordinate value
           #Number block value set another Label to store it
-          self.final_set_block = Label(self.window, text=self.value_entry.get(), bg="black", fg="red",font=("Arial",11,"bold"))
+          self.final_set_block = Label(self.window, bg="black", fg="red",font=("Arial",11,"bold"))
           self.final_set_block.place(x=self.number_set_x, y=self.number_set_y)
 
           #Storing of label,widget for future reference
-          self.last_label_value_keep.append(self.final_set_block)
           self.block_value_counter.append(self.block_make)
 
           #Reset
@@ -224,7 +220,6 @@ class StackVisualizer:
           self.block_up = 100
           self.block_right = 72
           self.block_down = 130
-          self.number_set_x = 40
           self.number_set_y = 105
           self.extra_decrease =6
 
@@ -250,7 +245,6 @@ if __name__ == '__main__':
     window.geometry("600x600")
     window.maxsize(600,600)
     window.minsize(600,600)
-    window.iconbitmap("stack_icon.ico")
     StackVisualizer(window)
     window.mainloop()
 
